@@ -14,8 +14,8 @@ def extract(page: Page, base_url: str) -> dict:
         "title": _safe(page.title),
         "h1": _text(page.query_selector("h1")),
         "text": _text(page.query_selector("main")) or _safe(lambda: page.inner_text("body").strip()),
-        "topics": _extract_topics(page),
-        "subtopics": _extract_subtopics(page),
+        "topics": _extract_items(page, "topic"),
+        "subtopics": _extract_items(page, "subtopic"),
     }
 
 
@@ -35,21 +35,19 @@ def close_ad_blocker(page: Page) -> None:
         log.debug("Failed to close ad blocker: %s", e)
 
 
-def _extract_topics(page: Page) -> list:
-    """Extract data from elements matching XPath //*[@data-type="topic"] by clicking and extracting."""
-    topics = []
-    xpath = '//*[@data-type="topic"]'
+def _extract_items(page: Page, data_type: str) -> list:
+    items = []
+    xpath = f'//*[@data-type="{data_type}"]'
     close_button_xpath = '//*[@id="close-topic"]'
 
     try:
-        topic_elements = page.locator(f"xpath={xpath}").all()
-        log.info("Found %d topic elements", len(topic_elements))
+        elements = page.locator(f"xpath={xpath}").all()
+        log.info("Found %d %s elements", len(elements), data_type)
 
-        for idx, element in enumerate(topic_elements):
+        for idx, element in enumerate(elements):
             try:
-                # Click the topic element to reveal/load data
                 element.click()
-                log.debug("Clicked topic element %d", idx)
+                log.debug("Clicked %s element %d", data_type, idx)
 
                 panel = page.locator("div.flex.h-full.flex-1.flex-col").first
                 panel.wait_for(state="visible", timeout=5000)
@@ -60,42 +58,19 @@ def _extract_topics(page: Page) -> list:
                     close_button = page.locator(f"xpath={close_button_xpath}")
                     if close_button.count() > 0:
                         close_button.click()
-                        log.debug("Closed topic %d", idx)
+                        log.debug("Closed %s %d", data_type, idx)
                 except Exception as e:
-                    log.debug("Failed to close topic %d: %s", idx, e)
-                topics.append(topic_data)
-
-                # Try to close the topic by clicking the close button
-                log.debug("Extracted topic %d: %s", idx, topic_data.get("text", "N/A"))
+                    log.debug("Failed to close %s %d: %s", data_type, idx, e)
+                items.append(topic_data)
+                log.debug("Extracted %s %d: %s", data_type, idx, name)
             except Exception as e:
-                log.warning("Failed to extract topic %d: %s", idx, e)
+                log.warning("Failed to extract %s %d: %s", data_type, idx, e)
                 continue
     except Exception as e:
-        log.warning("Failed to extract topics: %s", e)
+        log.warning("Failed to extract %ss: %s", data_type, e)
 
-    log.debug("Extracted %d topics total", len(topics))
-    return topics
-
-
-def _extract_subtopics(page: Page) -> list:
-    subtopics = []
-    for idx, el in enumerate(page.locator('xpath=//*[@data-type="subtopic"]').all()):
-        try:
-            el.click()
-            panel = page.locator("div.flex.h-full.flex-1.flex-col").first
-            panel.wait_for(state="visible", timeout=5000)
-            raw = _text(panel.element_handle()) or ""
-            name, description = _parse_panel(raw)
-            close = page.locator("#close-topic")
-            if close.count() > 0:
-                close.click()
-                panel.wait_for(state="hidden", timeout=3000)
-            subtopics.append({"name": name, "description": description})
-            log.debug("Subtopic %d — %s", idx, name)
-        except Exception as e:
-            log.warning("Subtopic %d failed: %s", idx, e)
-    log.info("Extracted %d subtopics", len(subtopics))
-    return subtopics
+    log.debug("Extracted %d %ss total", len(items), data_type)
+    return items
 
 
 def _parse_panel(raw: str) -> tuple:
