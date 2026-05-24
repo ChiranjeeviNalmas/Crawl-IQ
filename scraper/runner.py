@@ -1,6 +1,6 @@
 from .browser import launch_browser, new_page
 from .navigator import goto, click_link_by_text
-from .extractor import extract
+from .extractor import extract, close_ad_blocker
 from .storage import save
 from .config import ScraperConfig
 from .logger import get_logger
@@ -24,6 +24,9 @@ def run(config: ScraperConfig) -> str:
         elif config.direct_url:
             goto(page, config.direct_url, config.nav_timeout)
 
+        # Close ad blocker before extraction
+        close_ad_blocker(page)
+        
         data = extract(page, config.base_url)
 
     path = save(data, config.output_filename)
