@@ -1,0 +1,44 @@
+{
+  "title": "AI Engineer Roadmap",
+  "h1": "AI Engineer",
+  "url": "https://roadmap.sh/ai-engineer",
+  "text": "←  All Roadmaps\nWeekly Newsletter\nDownload\nAI Engineer\n\nStep by step guide to becoming an AI Engineer in 2026\n\nRoadmap\nProjects\nAI Tutor\nPersonalize\nJoin 20,959+ others tracking their progress on this roadmap\nSign up free\nWhat is an AI Engineer?\nHugging Face\nPre-requisites (One of these)\nScrimba is offering 20% off on their AIEngineer course. Check them out!\nAI Engineer\nIntroduction\nWhat is an AI Engineer?\nAI Engineer vs ML Engineer\nLarge Language Model (LLM)\nInference\nTraining\nVector DBs\nRAG\nPrompt Engineering\nAI Agents\nAI vs AGI\nCommon Terminology\nFrontend\nBackend\nFull-Stack\nImpact on Product Development\nRoles and Responsiblities\nPre-trained Models\nPrompt Engineering\nTokens\nContext\nAnthropic Claude\nGoogle Gemini\nOpenAI (GPT, o-series)\nMeta Llama\nMistral\nCohere\nHow LLMs Work\nReAct\nCoT\nZero-Shot\nTop-K\nTop-P\nFew-Shot\nPrompt Engineering Roadmap\nAI Safety and Ethics\nUnderstanding AI Safety Issues\nPrompt Injection Attacks\nBias and Fairness\nSecurity and Privacy Concerns\nConducting adversarial testing\nContent Moderation APIs\nAdding end-user IDs in prompts\nRobust prompt engineering\nKnow your Customers / Usecases\nConstraining outputs and inputs\nSafety Best Practices\nLM Studio\nClosed vs Open Source Models\nHugging Face Hub\nHugging Face Inference SDK\nTransformers.js\nOllama\nOpenAI Response API\nGoogle Gemini APi\nWhat are Embeddings\nSemantic Search\nRecommendation Systems\nAnomaly Detection\nData Classification\nUse Cases for Embeddings\nOpen AI Embeddings API\nCohere\nGemini Embedding\nJina\nSentence Transformers\nModels on Hugging Face\nVector Databases\nPurpose and Functionality\nChroma\nPinecone\nWeaviate\nFAISS\nLanceDB\nQdrant\nSupabase\nMongoDB Atlas\nPopular Vector DBs (pick one)\nIndexing Embeddings\nPerforming Similarity Search\nImplementing Vector Search\nWhat are RAGs?\nRAG Usecases\nRAG vs Fine-tuning\nChunking\nEmbedding\nVector Database\nRetrieval Process\nGeneration\nImplementing RAG\nWays of Implementing RAG\nUsing SDKs Directly\nLangchain\nLlama Index\nTools & Function Calling\nDeepSeek\nAI Agents\nAgents Usecases\nAI Agents Roadmap\nReAct Prompting\nManual Implementation\nOpenAI AgentKit & Agent SDK\nClaude Agent SDK\nBuilding AI Agents\nMultimodal AI\nMultimodal AI Usecases\nImage Understanding\nImage Generation\nVideo Understanding\nAudio Processing\nText-to-Speech\nSpeech-to-Text\nMultimodal AI Tasks\nOpenAI Vision API\nDALL-E API\nWhisper API\nHugging Face Models\nLangChain for Multimodal Apps\nLlamaIndex for Multimodal Apps\nImplementing Multimodal AI\nContinue learning with following relevant tracks\nAI Agents\nPrompt Engineering\nDevelopment Tools\nScrimba - AI Engineer Path\nRelated Roadmaps\nVibe Coding\nClaude Code\nPrompt Engineering\nAI and Data Scientist Roadmap\nCore LLM Elements\nHaystack\nRAGFlow\nAI & Data Scientist\nModel Context Protocol (MCP)\nMCP Host\nMCP Server\nCore Components\nMCP Client\nData Layer\nTransport Layer\nBuilding an MCP Server\nDeveloping wiht MCP\nBuilding an MCP Client\nConnect to Local Server\nConnect to Remote Server\nVertex AI Agent Builder\nGoogle ADK\nFind the detailed version of this roadmapalong with other similar roadmaps\nroadmap.sh\nFine-tuning\nWorking With LLMs\nContext Engineering\nPrompt vs Context Engineering\nInput Format\nSystem Prompting\nContext\nRole & Behavior\nConstrains\nStructured Output\nFunction Calling\nPrompt Caching\nStreaming Responses\nType of Models\nClosed Models\nAI Models\nSelf-Hosted Models\nRepetition Penalties\nChoosing the Right Model\nOpen Source Models\nGemma2\nQwen\nPlatforms & Ecosystem\nOpenRouter\nEmbedding Models\nProprietary Models\nOpen Source Models\nAPIs & SDKs\nClaude Messages API\nOpenAI-compatible APIs\nEmbeddings & Vector Databases\nRAGs\nAI Agents\nMulti-agents\nHugging Face Tasks\nEmbeddings\nAI Safety and Ethics\nOther AI Applications\nClaude Code\nGemini\nCodex\nWindsurf\nCursor\nReplit\nAI Assisted Coding Tools\nNanoBanana API\nSampling Parameters\nTemperature\nContext Engineering\nExternal Memory\nRAG and Dynamic Filters\nContext compaction\nContext Isolation\nVibe Coding Roadmap\nAI Tutor\nHave a question? Type here\nFrequently Asked Questions\nIs AI engineering a good career choice?\n\nYes, becoming an AI engineer is a great career choice. AI is transforming nearly every industry, from healthcare and finance to transportation and entertainment. As companies increasingly adopt AI-driven solutions, the demand for skilled AI engineers continues to grow. This role offers opportunities to work on cutting-edge technologies like machine learning, natural language processing, and computer vision, making it a highly innovative field\n\nWhat is reinforcement learning?\nDo AI Engineers need a degree?",
+  "links": [
+    {
+      "text": "",
+      "href": "https://roadmap.sh/roadmaps"
+    },
+    {
+      "text": "←  All Roadmaps",
+      "href": "https://roadmap.sh/roadmaps"
+    },
+    {
+      "text": "Download",
+      "href": "#"
+    },
+    {
+      "text": "Projects",
+      "href": "https://roadmap.sh/ai-engineer/projects"
+    },
+    {
+      "text": "AI Tutor",
+      "href": "https://roadmap.sh/ai/roadmap-chat/ai-engineer"
+    },
+    {
+      "text": "",
+      "href": "https://twitter.com/intent/tweet?text=Step by step guide to becoming an AI Engineer in 2026&url=https://roadmap.sh/ai-engineer"
+    },
+    {
+      "text": "",
+      "href": "https://www.facebook.com/sharer/sharer.php?quote=Step by step guide to becoming an AI Engineer in 2026&u=https://roadmap.sh/ai-engineer"
+    },
+    {
+      "text": "",
+      "href": "https://news.ycombinator.com/submitlink?t=Step by step guide to becoming an AI Engineer in 2026&u=https://roadmap.sh/ai-engineer"
+    },
+    {
+      "text": "",
+      "href": "https://www.reddit.com/submit?title=Step by step guide to becoming an AI Engineer in 2026&url=https://roadmap.sh/ai-engineer"
+    }
+  ]
+}
