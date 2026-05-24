@@ -6,7 +6,7 @@ log = get_logger("extractor")
 
 def extract(page: Page, base_url: str) -> dict:
     log.info("Extracting page data from %s", page.url)
-    #simple timeout for 5s    
+    # simple timeout for 5s
     page.wait_for_timeout(5000)
     log.debug("Page content loaded, starting extraction")
     return {
@@ -25,7 +25,7 @@ def close_ad_blocker(page: Page) -> None:
         # Try to find and click the close button in the iframe
         iframe_locator = page.frame_locator("iframe").first
         close_button = iframe_locator.locator('xpath=//span[@class="close-button"]')
-        
+
         if close_button.count() > 0:
             close_button.click()
             log.info("Closed ad blocker popup")
@@ -40,17 +40,17 @@ def _extract_topics(page: Page) -> list:
     topics = []
     xpath = '//*[@data-type="topic"]'
     close_button_xpath = '//*[@id="close-topic"]'
-    
+
     try:
         topic_elements = page.locator(f"xpath={xpath}").all()
         log.info("Found %d topic elements", len(topic_elements))
-        
+
         for idx, element in enumerate(topic_elements):
             try:
                 # Click the topic element to reveal/load data
                 element.click()
                 log.debug("Clicked topic element %d", idx)
-                
+
                 panel = page.locator("div.flex.h-full.flex-1.flex-col").first
                 panel.wait_for(state="visible", timeout=5000)
                 raw = _text(panel.element_handle()) or ""
@@ -64,7 +64,7 @@ def _extract_topics(page: Page) -> list:
                 except Exception as e:
                     log.debug("Failed to close topic %d: %s", idx, e)
                 topics.append(topic_data)
-                
+
                 # Try to close the topic by clicking the close button
                 log.debug("Extracted topic %d: %s", idx, topic_data.get("text", "N/A"))
             except Exception as e:
@@ -72,7 +72,7 @@ def _extract_topics(page: Page) -> list:
                 continue
     except Exception as e:
         log.warning("Failed to extract topics: %s", e)
-    
+
     log.debug("Extracted %d topics total", len(topics))
     return topics
 
