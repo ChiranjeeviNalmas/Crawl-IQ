@@ -23,7 +23,7 @@ def main():
     result = {"title": None, "h1": None, "url": None, "text": None, "links": []}
 
     with sync_playwright() as p:
-        browser = p.chromium.launch(headless=True)
+        browser = p.chromium.launch(headless=False)
         page = browser.new_page()
         page.goto("https://roadmap.sh", timeout=60000)
 
