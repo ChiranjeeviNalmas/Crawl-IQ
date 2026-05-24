@@ -23,7 +23,7 @@ def click_link_by_text(page: Page, text: str) -> bool:
 
 def _wait_for_content(page: Page) -> None:
     try:
-        page.wait_for_load_state("networkidle", timeout=30000)
+        page.wait_for_load_state("domcontentloaded", timeout=30000)
     except PWTimeout:
         log.warning("networkidle timed out — falling back to <main> selector")
         page.wait_for_selector("main", timeout=15000)

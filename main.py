@@ -2,11 +2,13 @@ import sys
 from scraper.runner import run
 from scraper.logger import get_logger
 from scrapers.roadmap_ai_engineer import AI_ENGINEER
+from scrapers.roadmap_system_design import SYSTEM_DESIGN
 
 log = get_logger("main")
 
 SCRAPERS = {
     "ai-engineer": AI_ENGINEER,
+    "system-design": SYSTEM_DESIGN,
 }
 
 
