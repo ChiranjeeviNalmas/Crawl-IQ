@@ -15,6 +15,7 @@ def extract(page: Page, base_url: str) -> dict:
         "h1": _text(page.query_selector("h1")),
         "text": _text(page.query_selector("main")) or _safe(lambda: page.inner_text("body").strip()),
         "topics": _extract_topics(page),
+        "subtopics": _extract_subtopics(page),
     }
 
 
@@ -74,6 +75,27 @@ def _extract_topics(page: Page) -> list:
     
     log.debug("Extracted %d topics total", len(topics))
     return topics
+
+
+def _extract_subtopics(page: Page) -> list:
+    subtopics = []
+    for idx, el in enumerate(page.locator('xpath=//*[@data-type="subtopic"]').all()):
+        try:
+            el.click()
+            panel = page.locator("div.flex.h-full.flex-1.flex-col").first
+            panel.wait_for(state="visible", timeout=5000)
+            raw = _text(panel.element_handle()) or ""
+            name, description = _parse_panel(raw)
+            close = page.locator("#close-topic")
+            if close.count() > 0:
+                close.click()
+                panel.wait_for(state="hidden", timeout=3000)
+            subtopics.append({"name": name, "description": description})
+            log.debug("Subtopic %d — %s", idx, name)
+        except Exception as e:
+            log.warning("Subtopic %d failed: %s", idx, e)
+    log.info("Extracted %d subtopics", len(subtopics))
+    return subtopics
 
 
 def _parse_panel(raw: str) -> tuple:
