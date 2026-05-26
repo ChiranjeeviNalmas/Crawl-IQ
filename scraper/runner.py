@@ -26,7 +26,7 @@ def run(config: ScraperConfig) -> str:
 
         # Close ad blocker before extraction
         close_ad_blocker(page)
-        
+
         data = extract(page, config.base_url)
 
     path = save(data, config.output_filename)
