@@ -8,3 +8,4 @@ AI_ENGINEER = ScraperConfig(
     link_text="AI Engineer",
     direct_url="https://roadmap.sh/ai-engineer",
 )
+
